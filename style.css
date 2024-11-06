@@ -1,0 +1,846 @@
+*{
+    user-select: none;
+}
+
+button{
+    cursor: url('media/items/cursor.png'), auto;
+}
+
+button:hover{
+    cursor: url('media/items/cursor.png'), auto;
+}
+
+body {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    font-family: Cursive;
+    cursor: url('media/items/cursor.png'), auto;
+    position: relative;
+    background-color: #000; 
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: url('media/items/background.png') center / cover no-repeat;
+    opacity: 0.5; 
+    z-index: -1;
+}
+
+h1,
+h2,
+h3,
+h4,
+a,
+p {
+    margin: 0;
+    color: #ffffff;
+    font-size: 20px;
+}
+
+/******************** Banner **********************/
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+}
+
+nav .image {
+    position: relative;
+    background-image: url('media/items/pokemon.png'); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    width: 35%; 
+    height: 150px; 
+    margin: 10px  auto;
+    border: 5px solid #FFD700; 
+    border-radius: 15px;
+    box-shadow: 0px 8px 15px 0px rgba(0, 0, 0, 0.5);
+    background-color: #FFFACD; 
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    padding-top: 10px; 
+    box-sizing: border-box; 
+}
+
+nav .texte {
+    color: #FF4500; 
+    font-family: cursive;
+    font-weight: 700;
+    font-size: 30px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    position: absolute; 
+    top: 0px; 
+    transform: translateX(-80%); 
+    z-index: 10; 
+}
+
+/****************** Pokeball ******************/
+
+.clicker{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-right: 20px;
+}
+
+#clickBtn {
+    height: 190px;
+    width: auto; 
+    transition: transform 0.1s ease, box-shadow 0.1s ease; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    border-radius: 50%; 
+}
+
+#clickBtn:active {
+    animation: clickAnimation 0.2s ease; 
+}
+
+@keyframes clickAnimation {
+    0% {
+        transform: scale(1); 
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    50% {
+        transform: scale(0.95); 
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5); 
+    }
+    100% {
+        transform: scale(1); 
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); 
+    }
+}
+
+#clickBtn.change {
+    animation: bounce 0.5s; 
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0); 
+    }
+    40% {
+        transform: translateY(-10px); 
+    }
+    60% {
+        transform: translateY(-5px); 
+    }
+}
+
+
+
+/**************** Autoclicker *****************/
+
+#buyAutoClicker {
+    width: 80px; 
+    transition: transform 0.1s ease, box-shadow 0.1s ease; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); 
+    padding: 15px 15px 15px 15px;
+    border-radius: 20%;
+    background-color:lightslategray;
+    border: black solid;
+}
+
+#buyAutoClicker:active {
+    animation: clickAnimation 0.2s ease; 
+}
+
+#autoClickerTimer {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;                   
+    font-size: 2rem; 
+    font-weight: bold;             
+    border: 2px solid #ff4500;     
+    border-radius: 12px; 
+    padding: 3px 20px; 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); 
+    position: absolute; 
+    bottom: 80px;     
+    left: 50%;        
+    transform: translateX(-50%); 
+    z-index: 1000; 
+    transition: opacity 0.3s ease;
+    animation: fadeIn 0.5s; 
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+@keyframes blink {
+    0%, 100% {
+        color: #333; 
+    }
+    50% {
+        color: #ff4500; 
+    }
+}
+
+#timerValue {
+    animation: blink 1s linear infinite; 
+}
+
+
+.autoclicker-container {
+    position: relative;
+    display: inline-block;
+}
+
+.autoclicker-badge {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: rgba(0, 153, 204, 0.85); 
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.9em;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    font-family: Arial, sans-serif;
+    text-align: center;
+    opacity: 0.9;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/****************** Multiplicateur ****************/
+
+#buyMultiplier {
+    width: 80px; 
+    transition: transform 0.1s ease, box-shadow 0.1s ease; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); 
+    padding: 15px 15px 15px 15px;
+    border-radius: 20%;
+    background-color:lightslategray;
+    border: black solid;
+}
+
+#buyMultiplier:active {
+    animation: clickAnimation 0.2s ease; 
+}
+
+.multiplier-container {
+    position: relative;
+    display: inline-block;
+}
+
+.multiplier-badge {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background-color: rgba(255, 215, 0, 0.85); 
+    color: #333;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.9em;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    font-family: Arial, sans-serif;
+    letter-spacing: 0.5px;
+    text-align: center;
+    border: 1px solid #333;
+    opacity: 0.9;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/**************  Autoclicker et Multiplicateur **************/
+
+.purchase-options{
+    display: flex;  
+    flex-direction: row;              
+    justify-content: space-evenly; 
+    margin-top: 100px;                                                   
+}
+
+.option{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+.option img.disabled {
+    opacity: 0.5;
+    cursor: not-allowed; 
+}
+
+/************ Gain points *************/
+
+.points-gain {
+    position: absolute;
+    color: rgb(0, 255, 0);
+    font-size: 23px;
+    font-weight: bold;
+    animation: floatUp 1s ease-out forwards; 
+}
+
+@keyframes floatUp {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-50px); 
+    }
+}
+
+#gameContainer {
+    position: relative;
+}
+
+.center {
+    display: flex;                    
+    justify-content: center;          
+    align-items: center;              
+    position: fixed;                  
+    top: 50%;                          
+    left: 50%;                         
+    transform: translate(-50%, -50%); 
+    z-index: 1000;                    
+}
+
+
+/**************** Notifications ****************/
+
+#notification {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+    
+
+
+/**************** Points ****************/
+
+.pokemon-container-points {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: auto;
+    padding: 20px 50px;
+    border: 2px solid #FFD700;
+    border-radius: 15px;
+    background: linear-gradient(135deg, rgba(34, 34, 34, 0.8), rgba(255, 215, 0, 0.15));
+    backdrop-filter: blur(6px);
+    box-shadow: 0 8px 16px rgba(255, 215, 0, 0.3);
+    margin: 8px;
+    transition: transform 0.3s ease;
+}
+
+.pokemon-container-points h2 {
+    font-size: 30px;
+    font-weight: bold;
+    color: #FFD700;
+    white-space: nowrap;
+    text-shadow: 0 0 5px #FFA500, 0 0 10px #FFA500, 0 0 15px #FF4500;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        text-shadow: 0 0 5px #FFA500, 0 0 10px #FFA500, 0 0 15px #FF4500;
+    }
+    50% {
+        text-shadow: 0 0 10px #FFA500, 0 0 20px #FFA500, 0 0 25px #FF4500;
+    }
+}
+
+
+/**************** Pokemon & Bar ****************/
+
+.pokemon-gallery {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 20px; 
+    width: 100%; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    flex-wrap: wrap; 
+}
+
+.pokemon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 180px; 
+    height: auto; 
+    padding: 20px 30px 20px 30px;
+    border: 2px solid #FFD700;
+    border-radius: 12px;
+    background: rgba(34, 34, 34, 0.6); 
+    backdrop-filter: blur(4px);
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.2);
+    margin: 8px;
+}
+
+
+.pokemon-container-hidden {
+    display: none;
+    width: 180px; 
+    height: auto;
+    padding: 15px;
+    border: 2px solid #FFD700;
+    border-radius: 12px;
+    background: rgba(34, 34, 34, 0.6); 
+    backdrop-filter: blur(4px);
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.2);
+    margin: 8px;
+}
+
+
+.pokemon-image {
+    max-width: 100%;
+    max-height: 100%; 
+    width: auto; 
+    height: 140px; 
+    border-radius: 8px;
+    transition: transform 0.2s ease;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.5));
+    object-fit: contain;
+}
+
+.pokemon-image:hover{
+    transform: scale(1.05);
+    filter:drop-shadow(0 4px 10px rgba(255, 255, 255, 0.3));
+}
+
+
+
+
+
+.progress-bar-container {
+    width: 90%; 
+    height: 10px; 
+    background-color: rgba(255, 255, 255, 0.2); 
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #FFD700, #FF4500); 
+    border-radius: 8px;
+    transition: width 0.4s ease; 
+}
+
+
+.rare-pokemon {
+    transition: transform 0.5s ease;
+}
+
+
+/******************* Popup button & reset button **********************/
+
+.btn {
+    display: flex;                 
+    flex-direction: column;       
+    align-items: flex-end; 
+    justify-content: center;       
+    gap: 10px;                    
+    margin-right: 20px;           
+    position: absolute;           
+    right: 0;                     
+    top: 20px;                    
+}
+
+.btnSound {
+    display: flex;                 
+    flex-direction: row;       
+    align-items: flex-start; 
+    justify-content: center;       
+    gap: 10px;                    
+    margin-left: 20px;           
+    position: absolute;           
+    left: 0;                     
+    top: 20px;                    
+}
+
+#openRulesPopupBtn, #reset{
+    background: rgba(255, 255, 255, 0.2); 
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: 2px solid #fff;
+    border-radius: 12px;
+    padding: 12px 24px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px); 
+}
+
+#unmuteMusic, #muteMusic {
+    background: rgba(255, 255, 255, 0.2); 
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: 2px solid #fff;
+    border-radius: 12px;
+    padding: 5px 5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px); 
+}
+
+#unmuteMusic.active {
+    background: #17ab4b;  
+    border-color: #17ab4b;
+    transform: scale(1.1);
+}
+
+#muteMusic.active {
+    background: #FF4500; 
+    border-color: #FF4500;
+    transform: scale(1.1); 
+}
+
+#openRulesPopupBtn:hover, #unmuteMusic:hover, #muteMusic:hover  {
+    background: rgba(255, 255, 255, 0.3); 
+    color: #17ab4b; 
+    transform: scale(1.1); 
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+#reset:hover {
+    background: rgba(255, 255, 255, 0.3); 
+    color: #FF4500; 
+    transform: scale(1.1); 
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+#unmuteMusic, #muteMusic{
+    background-color: #000;
+}
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(8px);
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.popup-content {
+    background: linear-gradient(145deg, #117692, #74b9ff);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    color: #2d3436;
+    max-width: 500px;
+    width: 80%;
+    text-align: center;
+    animation: popupZoomIn 0.4s ease;
+  }
+  
+.popup-content h2 {
+    font-size: 2em;
+    color: #ffeaa7;
+    text-shadow: 1px 1px #2d3436;
+    margin-bottom: 10px;
+}
+  
+.popup-content p,
+.popup-content ul {
+    font-size: 1.1em;
+    color: #ffffff;
+    list-style-type: none;
+}
+  
+.popup-content button {
+    background: #FFFACD;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    color: #2d3436;
+    border-radius: 5px;
+    margin-top: 15px;
+    transition: transform 0.2s;
+}
+  
+.popup-content button:hover {
+    background: #81ecec;
+    transform: scale(1.05);
+}
+
+.hidden {
+    display: none;
+}
+  
+@keyframes popupZoomIn {
+    from {
+      transform: scale(0.5);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+}
+  
+/******************* Pokemon Légendaire **********************/
+
+.legendary-pokemon {
+    width: 130px;
+    height: auto;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    animation: moveRandom 5s infinite alternate;
+}
+
+.legendary-pokemon.show {
+    opacity: 1;
+    transform: scale(1.1); 
+}
+
+
+.legendary-pokemon.hide {
+    opacity: 0;
+    transform: scale(0.9); 
+}
+
+@keyframes moveRandom {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(20px, -20px); }
+}
+
+/**************** Fin jeu  **************/
+
+#endGame {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+    flex-direction: column;
+    z-index: 9999;
+    transition: opacity 1s ease;
+}
+
+#endGame.hidden {
+    display: none;
+    opacity: 0;
+}
+
+#endGame h1 {
+    font-size: 3em;
+    color: gold;
+    animation: pulse² 2s infinite;
+}
+
+#endGame p {
+    font-size: 1.5em;
+    margin: 20px 0;
+}
+
+
+@keyframes pulse² {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+
+#playAgain {
+    background: #FFFACD;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    color: #2d3436;
+    border-radius: 5px;
+    margin-top: 15px;
+    transition: transform 0.2s;
+}
+  
+#playAgain:hover {
+    background: #81ecec;
+    transform: scale(1.05);
+}
+
+/****************le Responsive  **************/
+
+@media (max-width: 1024px) {
+    body {
+        overflow: hidden;
+    }
+
+    nav .image {
+        width: 30%;
+        height: 100px;
+    }
+    nav .texte {
+        display: none;
+    }
+
+    .btn, .btnSound {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+    }
+    
+    #openRulesPopupBtn, #openRulesPopup, #reset{
+        font-size: 15px;
+    }
+
+    .pokemon-container-points {
+        position: absolute;
+        width: 20%;
+        padding: 15px 20px;
+    }
+
+    .pokemon-container-points h2{
+        font-size: 20px;
+        
+    }
+
+    #clickBtn {
+        height: 150px;
+    }
+    .pokemon-container {
+        width: 20%;
+        padding: 15px;
+        margin: 5px auto;
+    }
+    .pokemon-image {
+        height: 100px;
+    }
+
+    .purchase-options {
+        flex-direction: row;
+        align-items: center;
+        gap: 15px;
+        margin-top: 250px;
+    }
+}
+
+/**************** 768px *********************/
+
+@media (max-width: 768px){
+
+
+
+    #clickBtn {
+        height: 90px;
+    }
+
+    .purchase-options{
+        margin-top: 150px;
+
+    }
+
+    .purchase-options{
+        scale: 90%;
+    }
+}
+
+/**************** 425px *********************/
+
+@media (max-width: 425px){
+
+   
+    .btn{
+        scale: 80%;
+    }
+
+    #clickBtn {
+        height: 90px;
+    }
+    #openRulesPopupBtn, #openRulesPopup, #reset{
+        font-size: 8px;
+    }
+    .pokemon-container-points h2{
+        font-size: 14px;
+        
+    }
+    .purchase-options{
+        scale: 80%;
+    }
+
+}
+
+/**************** 425px *********************/
+
+@media (max-width: 320px){
+
+  
+    .btn{
+        scale: 75%;
+    }
+
+    #clickBtn {
+        height: 90px;
+    }
+    #openRulesPopupBtn, #openRulesPopup, #reset{
+        font-size: 5px;
+    }
+    .pokemon-container-points h2{
+        font-size: 14px;
+        
+    }
+    .purchase-options{
+        scale: 70%;
+    }
+
+}

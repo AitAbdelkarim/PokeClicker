@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="media/pokeball/pokeball.png" type="image/png">
+    <script type="text/javascript" src="script.js" defer></script>
+    <title>PokeClicker</title>
+</head>
+<body>
+    <nav>
+        <div class="image">
+            <p class="texte">PokeClicker</p>
+        </div>
+    </nav>
+
+    <div class="btn">
+        <button id="openRulesPopupBtn">Règles du jeu</button>
+        <button id="reset">Réinitialiser</button>
+    </div>
+    <div class="btnSound">
+        <button id="muteMusic">⏸️</button>
+        <button id="unmuteMusic">🔊</button>
+    </div>
+
+    <div id="notification"></div>
+
+    <div class=" center pokemon-container-points">
+        <h2>Points: <span id="points">0</span></h2>
+    </div>
+
+    <div class="pokemon-gallery">
+        <div class="pokemon-container">
+            <img id="pokemonImage" class="pokemon-image" src="media/pokemon/1.png" alt="Pokémon" draggable="false">
+            <div class="progress-bar-container">
+                <div id="progressBar" class="progress-bar"></div>
+            </div>
+        </div>
+        <div  id="container4" class="pokemon-container-hidden">
+            <img id="pokemonImage4" class="pokemon-image" src="media/pokemon/4.png" hidden alt="Pokémon" draggable="false">
+        </div>
+        <div  id="container9" class="pokemon-container-hidden">
+            <img id="pokemonImage9" class="pokemon-image" src="media/pokemon/9.png" hidden alt="Pokémon" draggable="false">
+        </div>
+    </div>
+
+
+    <div class="purchase-options">
+        <div class="option">
+            <p>Autoclicker</p>
+            <div class="autoclicker-container" style="position: relative; display: inline-block;">
+                <img id="buyAutoClicker" src="media/items/eject-button.png" alt="Autoclicker" draggable="false">
+                <span id="autoClickPointsDisplay" class="autoclicker-badge">+0/s</span> 
+            </div>
+            <p><span id="autoClickerCost"></span> points</p>
+        </div>
+        <p id="autoClickerTimer" style="display: none;">00:<span id="timerValue">15</span></p>
+        
+
+        <div class="option">
+            <p>Multiplicateur</p>
+            <div class="multiplier-container" style="position: relative; display: inline-block;">
+                <img id="buyMultiplier" src="media/items/lucky-punch.png" alt="Multiplicateur" draggable="false">
+                <span id="pointsPerClickDisplay" class="multiplier-badge">x1</span>
+            </div>
+            <p><span id="multiplierCost"></span> points</p>
+        </div>
+        
+    </div>
+    <div class="clicker">
+        <div id="points-gain-container"></div>
+        <img id="clickBtn" src="media/pokeball/poke-ball.png" draggable="false" alt="Pokéball">
+    </div>
+
+
+    <!-- popup des règles -->
+    <div id="openPopup" class="popup-overlay">
+        <div class="popup-content">
+        <h2>Bienvenue dans votre jeu PokeClicker</h2>
+        <ul>
+            <li>• Cliquez sur la Pokeball pour gagner des points.</li>
+            <li>• Plus vous cliquez, plus vous obtenez de points, qui serviront à faire évoluer vos Pokémons et acheter des améliorations.</li>
+            <li>• Chaque Pokémon possède plusieurs étapes d’évolution.</li>
+            <li>• Après avoir atteint l’évolution maximale d’un Pokémon, un nouveau Pokémon du type (Eau, Feu, Herbe) suivant commence à évoluer.</li>
+            <li>• Une barre de progression montre l’avancement de chaque Pokémon vers sa prochaine évolution.</li>
+            <li>• Certains Pokémon légendaires apparaissent aléatoirement toutes les 45 secondes pour une durée de 3 secondes. Cliquez dessus pour gagner des points bonus.</li>
+            <li>• Autoclicker : L’autoclicker génère des points automatiquement pendant 15 secondes. Vous pouvez acheter plusieurs autoclickers pour multiplier les points générés automatiquement.</li>
+            <li>• Multiplicateur : Le multiplicateur fait augmenter vos points de gain par clic après chaque achat, rendant chaque clic plus puissant.</li>
+            <li>• La Pokeball évoluent selon votre progression.</li>
+        </ul>
+        <button id="closePopup">Jouer</button>
+        </div>
+    </div>
+
+    <!-- popup du reset -->
+    <div id="resetConfirmationPopup" class="popup hidden">
+        <div class="popup-content">
+            <h2>Confirmation</h2>
+            <p>Êtes-vous sûr de vouloir réinitialiser le jeu ? Cela supprimera toutes vos progressions.</p>
+            <button id="confirmReset">Oui</button>
+            <button id="cancelReset">Non</button>
+        </div>
+    </div>
+
+
+    <!-- Message fin jeu -->
+    <div id="endGame" class="hidden">
+        <h1>Félicitations !</h1>
+        <p>Vous avez atteint l'évolution finale de tous tes Pokémons👏</p>
+        <button id="playAgain">Rejouer</button>
+    </div>
+  
+    <audio id="clickSound" src="media/mp3/click.mp3" preload="auto"></audio>
+    <audio id="notificationSound" src="media/mp3/notification.mp3" preload="auto"></audio>
+    <audio id="backgroundMusic" src="media/mp3/background.mp3" loop autoplay></audio>
+    <audio id="evolutionSound" src="media/mp3/evolution.mp3" preload="auto"></audio>
+    <audio id="timerSound" src="media/mp3/timer.mp3" preload="auto"></audio>
+    <audio id="endGameSound" src="media/mp3/endgame.mp3" preload="auto"></audio>
+
+
+</body>
+</html>
